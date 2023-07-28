@@ -26,6 +26,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     const token = localStorage.getItem("flow:token");
     if (!token) {
       setLoading(false);
+
       return;
     }
     api.defaults.headers.common.Authorization = `Bearer ${token}`;

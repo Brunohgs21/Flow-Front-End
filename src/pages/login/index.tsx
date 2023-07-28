@@ -4,14 +4,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useAuth } from "../../hooks/useAuth";
 
 export const Login = () => {
+  const { signIn } = useAuth();
   const { register, handleSubmit } = useForm<LoginData>({
     resolver: zodResolver(schema),
   });
   const submit: SubmitHandler<LoginData> = async (data) => {
     signIn(data);
   };
-
-  const { signIn } = useAuth();
 
   return (
     <main>
