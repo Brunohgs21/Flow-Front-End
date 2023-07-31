@@ -24,18 +24,18 @@ export const Header = styled.header`
     gap: 0.6344rem;
     cursor: pointer;
 
-    width: 3.4681rem;
+    width: 5rem;
     height: 2rem;
 
     /* grey-3 */
 
-    background: #212529;
+    background: #121214;
     border-radius: 0.25rem;
 
     font-family: "Inter", sans-serif;
     font-style: normal;
     font-weight: 600;
-    font-size: 0.75rem;
+    font-size: 1rem;
     line-height: 1.75rem;
     /* identical to box height, or 237% */
 
@@ -49,14 +49,13 @@ export const Header = styled.header`
     }
   }
   button:hover {
-    background-color: #ff577f;
+    background-color: #343b41;
+    color: #ffffff;
     transition: 1s ease;
   }
 `;
 export const Logo = styled.h1`
   font-family: "Inter", sans-serif;
 
-  /* color-primary */
-
-  color: #ff577f;
+  color: var();
 `;

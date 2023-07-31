@@ -63,7 +63,7 @@ export const Main = styled.div`
   button {
     height: 32px;
     width: 32.485294342041016px;
-    background: #212529;
+    background: #121214;
     border-radius: 4px;
     color: #ffffff;
     font-size: large;
@@ -73,7 +73,8 @@ export const Main = styled.div`
     justify-content: center;
   }
   button:hover {
-    background-color: #ff577f;
+    background-color: #343b41;
+    color: #ffffff;
 
     transition: 1s ease;
   }

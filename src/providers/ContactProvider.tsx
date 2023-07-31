@@ -10,7 +10,7 @@ interface ContactProviderProps {
 
 interface ContactContextValues {
   contacts: Contact[];
-  postContact: (data: ContactData) => void;
+  postContact: (data: ContactData) => Promise<void>;
   updateContact: (data: TContactSchemaUpdate) => void;
   deleteContact: () => void;
 }

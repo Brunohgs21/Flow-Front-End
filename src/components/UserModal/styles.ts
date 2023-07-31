@@ -15,7 +15,7 @@ export const DivModal = styled.div`
   border-radius: 4px;
   div {
     display: flex;
-
+    align-items: center;
     justify-content: space-between;
     width: 100%;
     height: 50px;
@@ -220,7 +220,7 @@ export const DivModal = styled.div`
   }
 `;
 
-export const BackGround = styled.div`
+export const BackGround = styled.section`
   width: 100%;
   height: 100%;
   display: flex;

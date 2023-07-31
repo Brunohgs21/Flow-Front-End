@@ -214,7 +214,7 @@ export const DivModal = styled.div`
   }
 `;
 
-export const BackGround = styled.div`
+export const BackGround = styled.section`
   width: 100%;
   height: 100%;
   display: flex;

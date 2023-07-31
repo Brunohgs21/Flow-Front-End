@@ -1,28 +1,13 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { BackGround, DivModal } from "./styles";
 import { useModal } from "../../hooks/useModal";
-import { useContact } from "../../hooks/useContact";
-import {
-  ContactSchemaUpdate,
-  TContactSchemaUpdate,
-  TUserSchema,
-  TUserSchemaUpdate,
-} from "../../schemas";
+import { TUserSchemaUpdate } from "../../schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState } from "react";
-import { api } from "../../services/api";
-import { z } from "zod";
+
 import { UserSchemaUpdate } from "../../schemas/index";
 import { useAuth } from "../../hooks/useAuth";
-
-interface IUser {
-  name: string;
-  email: string;
-  phone: string;
-  createdAt: string;
-  password: string;
-  id: string;
-}
+import { useOutClick } from "../../hooks/useOutclick";
+import { useRef } from "react";
 
 const UserModal = () => {
   const { register, handleSubmit } = useForm<TUserSchemaUpdate>({
@@ -30,46 +15,41 @@ const UserModal = () => {
   });
   const { setOpenModalProfile } = useModal();
   const { deleteUser, updateUser } = useAuth();
+  const clickRef = useOutClick(() => setOpenModalProfile(false), 2);
+  const divRef = useRef(null);
   const onSubmit: SubmitHandler<TUserSchemaUpdate> = async (
     data: TUserSchemaUpdate
   ) => {
-    // Criar um novo objeto para armazenar os dados filtrados
     const newData: TUserSchemaUpdate = {} as TUserSchemaUpdate;
 
-    // Obter um array com as chaves do objeto data
     const keys = Object.keys(data) as (keyof TUserSchemaUpdate)[];
 
-    // Percorrer as chaves do objeto data
     for (const key of keys) {
-      // Verificar se a propriedade existe e se o valor é uma string não vazia
       if (
         data[key] !== undefined &&
         typeof data[key] === "string" &&
-        data[key]!.trim() !== ""
+        data[key]?.trim() !== ""
       ) {
         newData[key] = data[key];
       }
     }
 
-    console.log(newData);
     updateUser(newData);
   };
 
   return (
-    <BackGround>
-      <DivModal>
+    <BackGround ref={clickRef}>
+      <DivModal ref={divRef}>
         <div>
-          <h1></h1>
+          <h1>Edit info</h1>
           <button
             className="closeBtn"
             onClick={() => setOpenModalProfile(false)}
-          >
-            X
-          </button>
+          ></button>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <label htmlFor="name">Nome</label>
+          <label htmlFor="name">Name</label>
           <input type="text" id="name" {...register("name")} />
           <label htmlFor="email">Email</label>
           <input type="email" id="email" {...register("email")} />

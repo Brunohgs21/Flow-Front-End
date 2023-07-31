@@ -29,10 +29,10 @@ export const DashboardInfo = () => {
     <Container>
       <section>
         <span>
-          Olá, <span>{user == undefined ? "Usuário" : user.name}</span>
+          Hello, <span>{user == undefined ? "User" : user.name}</span>
         </span>
         <button onClick={() => setOpenModalProfile(true)}>
-          Editar informações pessoais
+          Edit personal info
         </button>
       </section>
     </Container>

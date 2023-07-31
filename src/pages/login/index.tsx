@@ -15,7 +15,7 @@ export const Login = () => {
 
   return (
     <Div>
-      <h2>Contact Flow</h2>
+      <h1>Contact Flow</h1>
       <DivForm>
         <form onSubmit={handleSubmit(submit)}>
           <div className="emailDiv">

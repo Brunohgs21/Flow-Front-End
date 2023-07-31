@@ -36,4 +36,19 @@ export const Container = styled.div`
 
     color: #f8f9fa;
   }
+  button {
+    font-family: "Inter", sans-serif;
+    background: #121214;
+    border-radius: 0.25rem;
+    color: #f8f9fa;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.75rem;
+    padding: 0rem 1.0152rem;
+  }
+  button:hover {
+    background-color: #343b41;
+    color: #ffffff;
+    transition: 1s ease;
+  }
 `;

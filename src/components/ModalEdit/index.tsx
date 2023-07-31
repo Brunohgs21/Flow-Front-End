@@ -4,6 +4,8 @@ import { useModal } from "../../hooks/useModal";
 import { useContact } from "../../hooks/useContact";
 import { ContactSchemaUpdate, TContactSchemaUpdate } from "../../schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useOutClick } from "../../hooks/useOutclick";
+import { useRef } from "react";
 
 export const ModalEdit = () => {
   const ContactName = localStorage.getItem("ContactName") || "";
@@ -20,15 +22,18 @@ export const ModalEdit = () => {
   });
   const { setOpenModalEdit } = useModal();
   const { deleteContact, updateContact } = useContact();
+  const clickRef = useOutClick(() => setOpenModalEdit(false), 2);
+  const divRef = useRef(null);
 
   return (
-    <BackGround>
-      <DivModal>
+    <BackGround ref={clickRef}>
+      <DivModal ref={divRef}>
         <div>
-          <h1></h1>
-          <button className="closeBtn" onClick={() => setOpenModalEdit(false)}>
-            X
-          </button>
+          <h1>Edit contact</h1>
+          <button
+            className="closeBtn"
+            onClick={() => setOpenModalEdit(false)}
+          ></button>
         </div>
 
         <form onSubmit={handleSubmit(updateContact)}>
@@ -40,12 +45,12 @@ export const ModalEdit = () => {
           <input type="phone" id="phone" {...register("phone")} />
           <section>
             <button className="btnSave" type="submit">
-              Salvar alterações
+              Save
             </button>
           </section>
         </form>
         <button className="btnDelete" type="button" onClick={deleteContact}>
-          Excluir
+          Delete
         </button>
       </DivModal>
     </BackGround>

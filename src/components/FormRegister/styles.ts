@@ -5,10 +5,8 @@ export const Link = styled(LinkRouter)`
   font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 1.375rem;
-
-  text-decoration-line: underline;
 
   color: var(--color-grey-3);
 
@@ -102,6 +100,11 @@ export const DivForm = styled.div`
 
   input {
     background: var(--color-white);
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
     border: 0.125rem solid var(--color-main-3);
     border-radius: 0.5rem;
     height: 3.75rem;
@@ -198,6 +201,9 @@ export const DivForm = styled.div`
 
     color: var(--color-grey-4);
   }
+  .title {
+    font-family: "Inter", sans-serif;
+  }
   @media (max-width: 700px) {
     width: 90%;
     input {
@@ -215,7 +221,8 @@ export const DivForm = styled.div`
     }
     .headerDiv {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      align-items: center;
     }
   }
 `;
