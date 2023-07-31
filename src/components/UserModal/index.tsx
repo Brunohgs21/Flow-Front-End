@@ -1,6 +1,6 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { BackGround, DivModal } from "./styles";
-import { useModal } from "../../hooks/useModal";
+import { useContact } from "../../hooks/useContact";
 import { TUserSchemaUpdate } from "../../schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -13,7 +13,7 @@ const UserModal = () => {
   const { register, handleSubmit } = useForm<TUserSchemaUpdate>({
     resolver: zodResolver(UserSchemaUpdate),
   });
-  const { setOpenModalProfile } = useModal();
+  const { setOpenModalProfile } = useContact();
   const { deleteUser, updateUser } = useAuth();
   const clickRef = useOutClick(() => setOpenModalProfile(false), 2);
   const divRef = useRef(null);

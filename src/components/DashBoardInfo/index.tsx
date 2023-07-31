@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Container } from "./styles";
-import { useModal } from "../../hooks/useModal";
+import { useContact } from "../../hooks/useContact";
 import { useAuth } from "../../hooks/useAuth";
 
 interface User {
@@ -15,7 +15,7 @@ export const DashboardInfo = () => {
     user: { name },
   } = useAuth();
   const [user, setUser] = useState<User>();
-  const { setOpenModalProfile } = useModal();
+  const { setOpenModalProfile } = useContact();
 
   useEffect(() => {
     async function getUser() {

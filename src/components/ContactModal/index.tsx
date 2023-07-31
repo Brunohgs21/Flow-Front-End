@@ -1,6 +1,5 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useContact } from "../../hooks/useContact";
-import { useModal } from "../../hooks/useModal";
 import { BackGround, DivModal } from "./styles";
 import { ContactData, contactSchema } from "../DashBoardMain/Validator";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,12 +7,13 @@ import { useRef } from "react";
 import { useOutClick } from "../../hooks/useOutclick";
 
 export const ContactModal = () => {
-  const { setOpenModal } = useModal();
+  const { setOpenModal } = useContact();
   const { postContact } = useContact();
   const { register, handleSubmit } = useForm<ContactData>({
     resolver: zodResolver(contactSchema),
   });
   const submit: SubmitHandler<ContactData> = async (data) => {
+    console.log(data);
     postContact(data);
   };
   const clickRef = useOutClick(() => setOpenModal(false), 2);

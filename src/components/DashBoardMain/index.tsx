@@ -1,6 +1,6 @@
 import { Main } from "./styles";
 import Board from "../Board/Board";
-import { useModal } from "../../hooks/useModal";
+import { useContact } from "./../../hooks/useContact";
 
 export interface Contact {
   id: string;
@@ -10,7 +10,7 @@ export interface Contact {
   createdAt: string;
 }
 export const DashboardMain = () => {
-  const { setOpenModal } = useModal();
+  const { setOpenModal } = useContact();
   return (
     <Main>
       <div>

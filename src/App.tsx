@@ -1,6 +1,6 @@
 import { AuthProvider } from "./providers/AuthProvider";
 import { ContactProvider } from "./providers/ContactProvider";
-import { ModalProvider } from "./providers/ModalProvider";
+// import { ModalProvider } from "./providers/ModalProvider";
 import { RoutesMain } from "./routes";
 import GlobalStyle from "./styles/GlobalStyle";
 import { ToastContainer } from "react-toastify";
@@ -11,11 +11,11 @@ export const App = () => {
     <>
       <GlobalStyle />
       <AuthProvider>
-        <ModalProvider>
-          <ContactProvider>
-            <RoutesMain />
-          </ContactProvider>
-        </ModalProvider>
+        {/* <ModalProvider> */}
+        <ContactProvider>
+          <RoutesMain />
+        </ContactProvider>
+        {/* </ModalProvider> */}
       </AuthProvider>
       <ToastContainer
         position="top-right"

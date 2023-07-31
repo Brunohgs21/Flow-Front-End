@@ -4,10 +4,10 @@ import { DashboardInfo } from "../../components/DashBoardInfo";
 import DashboardMain from "../../components/DashBoardMain";
 import { ModalEdit } from "../../components/ModalEdit";
 import UserModal from "../../components/UserModal";
-import { useModal } from "../../hooks/useModal";
+import { useContact } from "../../hooks/useContact";
 
 export const Dashboard = () => {
-  const { openModal, openModalEdit, openModalProfile } = useModal();
+  const { openModal, openModalEdit, openModalProfile } = useContact();
   return (
     <>
       <DashboardHeader />

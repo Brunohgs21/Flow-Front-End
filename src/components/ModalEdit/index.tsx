@@ -1,11 +1,10 @@
 import { useForm } from "react-hook-form";
 import { BackGround, DivModal } from "./styles";
-import { useModal } from "../../hooks/useModal";
-import { useContact } from "../../hooks/useContact";
 import { ContactSchemaUpdate, TContactSchemaUpdate } from "../../schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useOutClick } from "../../hooks/useOutclick";
 import { useRef } from "react";
+import { useContact } from "./../../hooks/useContact";
 
 export const ModalEdit = () => {
   const ContactName = localStorage.getItem("ContactName") || "";
@@ -20,7 +19,7 @@ export const ModalEdit = () => {
       phone: ContactPhone,
     },
   });
-  const { setOpenModalEdit } = useModal();
+  const { setOpenModalEdit } = useContact();
   const { deleteContact, updateContact } = useContact();
   const clickRef = useOutClick(() => setOpenModalEdit(false), 2);
   const divRef = useRef(null);
