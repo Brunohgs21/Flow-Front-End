@@ -116,8 +116,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const updateUser = async (data: TUserSchemaUpdate) => {
     try {
-      await api.patch("/users", data);
+      const response = await api.patch("/users", data);
       toast.success("Sucessfully updated!");
+      setUser(response.data);
     } catch (error: any) {
       console.log(error);
       toast.error(error.response.data!.message);
