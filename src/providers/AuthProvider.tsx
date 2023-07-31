@@ -4,6 +4,7 @@ import { api } from "../services/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/ReactToastify.css";
+import { TUserSchemaUpdate } from "../schemas";
 
 interface AuthProviderProps {
   children: React.ReactNode;
@@ -14,6 +15,7 @@ interface AuthContextValues {
   loading: boolean;
   user: LoggedUser;
   registerUser: (data: IUserRegister) => void;
+  deleteUser: () => void;
 }
 
 interface LoggedUser {
@@ -56,7 +58,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         return;
       }
       try {
-        const response = await api.get("/profile");
+        const response = await api.get("users");
         setUser(response.data);
       } catch (error) {
         console.log(error);
@@ -71,6 +73,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       const reponse = await api.post<LoginResponse>("/login", data);
 
       const { token, loggedUser } = reponse.data;
+      const { name, email, phone } = loggedUser;
+      localStorage.setItem("userName", name);
+      localStorage.setItem("userEmail", email);
+      localStorage.setItem("userPhone", phone);
 
       setUser(loggedUser);
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -98,8 +104,23 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       toast.error(error.response.data!.message);
     }
   };
+  const deleteUser = async () => {
+    try {
+      await api.delete("users");
+      localStorage.clear();
+      navigate("/", { replace: true });
+      toast.success("Sucessfully deleted!");
+    } catch (error: any) {
+      console.log(error);
+      toast.error(error.response.data!.message);
+    }
+  };
+
+  // const updateUser = async (data: TUserSchemaUpdate) => {};
   return (
-    <AuthContext.Provider value={{ signIn, loading, user, registerUser }}>
+    <AuthContext.Provider
+      value={{ signIn, loading, user, registerUser, deleteUser }}
+    >
       {children}
     </AuthContext.Provider>
   );

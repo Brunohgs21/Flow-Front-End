@@ -8,7 +8,7 @@ export const ProtectedRoutes = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-  console.log(user);
+
   return Object.keys(user).length !== 0 ? (
     <Outlet />
   ) : (

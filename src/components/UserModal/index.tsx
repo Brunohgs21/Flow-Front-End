@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { BackGround, DivModal } from "./styles";
 import { useModal } from "../../hooks/useModal";
 import { useContact } from "../../hooks/useContact";
@@ -45,15 +45,37 @@ const UserModal = () => {
   const userPhone = localStorage.getItem("userPhone") || "";
   const { register, handleSubmit } = useForm<TUserSchemaUpdate>({
     resolver: zodResolver(UserSchemaUpdate),
-    defaultValues: {
-      name: userName,
-      email: userEmail,
-      phone: userPhone,
-    },
+    // defaultValues: {
+    //   name: userName,
+    //   email: userEmail,
+    //   phone: userPhone,
+    // },
   });
   const { setOpenModalProfile } = useModal();
-  //   const { updateUser, deleteUser } = useAuth();
+  const { deleteUser } = useAuth();
 
+  const onSubmit: SubmitHandler<TUserSchemaUpdate> = async (data) => {
+    // Criar um novo objeto para armazenar os dados filtrados
+    const newData: TUserSchemaUpdate = {} as TUserSchemaUpdate;
+
+    // Obter um array com as chaves do objeto data
+    const keys = Object.keys(data) as (keyof TUserSchemaUpdate)[];
+
+    // Percorrer as chaves do objeto data
+    for (const key of keys) {
+      // Verificar se a propriedade existe e se o valor é uma string não vazia
+      if (
+        data[key] !== undefined &&
+        typeof data[key] === "string" &&
+        data[key]!.trim() !== ""
+      ) {
+        newData[key] = data[key];
+      }
+    }
+
+    console.log(newData);
+    // Resto do seu código aqui...
+  };
   return (
     <BackGround>
       <DivModal>
@@ -67,7 +89,7 @@ const UserModal = () => {
           </button>
         </div>
 
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="name">Nome</label>
           <input type="text" id="name" {...register("name")} />
           <label htmlFor="email">Email</label>
@@ -80,7 +102,7 @@ const UserModal = () => {
             </button>
           </section>
         </form>
-        <button className="btnDelete" type="button">
+        <button className="btnDelete" type="button" onClick={deleteUser}>
           Delete
         </button>
       </DivModal>
