@@ -23,6 +23,9 @@ export const ContactProvider = ({ children }: ContactProviderProps) => {
   useEffect(() => {
     (async () => {
       try {
+        const token = localStorage.getItem("flow:token");
+        api.defaults.headers.common.Authorization = `Bearer ${token}`;
+
         const response = await api.get<Contact[]>("/contacts");
         setContacts(response.data);
       } catch (error) {

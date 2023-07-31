@@ -56,7 +56,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         return;
       }
       try {
-        const response = await api.get("/profile");
+        const response = await api.get("/users");
         setUser(response.data);
       } catch (error) {
         console.log(error);
