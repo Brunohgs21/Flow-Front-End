@@ -5,7 +5,7 @@ import { useContact } from "../../hooks/useContact";
 import { ContactSchemaUpdate, TContactSchemaUpdate } from "../../schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-const ModalEdit = () => {
+export const ModalEdit = () => {
   const ContactName = localStorage.getItem("ContactName") || "";
   const ContactEmail = localStorage.getItem("ContactEmail") || "";
   const ContactPhone = localStorage.getItem("ContactPhone") || "";
@@ -51,5 +51,3 @@ const ModalEdit = () => {
     </BackGround>
   );
 };
-
-export default ModalEdit;
