@@ -21,7 +21,7 @@ export const DashboardHeader = () => {
   return (
     <Header>
       <Logo>Contact Flow</Logo>
-      <button onClick={logout}>Sair</button>
+      <button onClick={logout}>LogOut</button>
     </Header>
   );
 };

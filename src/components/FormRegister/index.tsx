@@ -81,8 +81,7 @@ const FormRegister = () => {
   return (
     <DivForm ref={clickRef}>
       <div className="headerDiv">
-        <h1>Cadastro</h1>
-        <Link to="/">Retornar para o login</Link>
+        <Link to="/">Return to logIn</Link>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="nameDiv">
@@ -104,7 +103,7 @@ const FormRegister = () => {
         <input
           type="password"
           id="password"
-          placeholder="Senha"
+          placeholder="Password"
           {...register("password")}
           onFocus={handleOnFocus}
           onKeyUp={handleOnKeyUp}
@@ -123,11 +122,11 @@ const FormRegister = () => {
         <input
           type="password"
           id="confirmation"
-          placeholder="Confirmar Senha"
+          placeholder="Confirm Password"
           {...register("confirmation")}
         />
         {errors.confirmation?.message}
-        <button type="submit">Cadastrar</button>
+        <button type="submit">Sign Up</button>
       </form>
     </DivForm>
   );

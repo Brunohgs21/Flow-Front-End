@@ -3,8 +3,13 @@ import { LoginData, schema } from "./validator";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAuth } from "../../hooks/useAuth";
 import { Div, DivForm, Link } from "./styles";
+import { api } from "../../services/api";
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router";
 
 export const Login = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const { signIn } = useAuth();
   const { register, handleSubmit } = useForm<LoginData>({
     resolver: zodResolver(schema),
@@ -12,6 +17,19 @@ export const Login = () => {
   const submit: SubmitHandler<LoginData> = async (data) => {
     signIn(data);
   };
+
+  useEffect(() => {
+    (async () => {
+      try {
+        await api.get("/users");
+        const toNavigate = location.state?.from?.pathname || "/dashboard";
+
+        navigate(toNavigate, { replace: true });
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
 
   return (
     <Div>
@@ -31,7 +49,7 @@ export const Login = () => {
         <div className="divText">
           <p className="p">Don't have an account?</p>
         </div>
-        <Link to="/signup">SignUp</Link>
+        <Link to="/signup">Sign Up</Link>
       </DivForm>
     </Div>
   );

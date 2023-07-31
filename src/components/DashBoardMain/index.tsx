@@ -14,7 +14,7 @@ export const DashboardMain = () => {
   return (
     <Main>
       <div>
-        <p className="techText">Contatos</p>
+        <p className="techText">Contacts</p>
         <button onClick={() => setOpenModal(true)}>+</button>
       </div>
       <Board />

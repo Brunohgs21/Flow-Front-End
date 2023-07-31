@@ -24,7 +24,7 @@ export const Header = styled.header`
     gap: 0.6344rem;
     cursor: pointer;
 
-    width: 3.4681rem;
+    width: 4rem;
     height: 2rem;
 
     /* grey-3 */

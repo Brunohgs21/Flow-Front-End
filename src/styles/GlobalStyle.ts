@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
+
    :root {
     --color-blue-900: #0d47a1;
     --color-blue-800: #1565c0;
@@ -51,6 +52,7 @@ export default createGlobalStyle`
     outline:0;
     box-sizing: border-box;
     list-style: none;
+    text-decoration: none;
   }
 
   body,html{
@@ -67,7 +69,6 @@ export default createGlobalStyle`
   }
 
   body, input, button, textarea {
-    font-family: 'Inter';
     font-size: 1.6rem;
   }
 
