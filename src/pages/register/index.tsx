@@ -1,3 +1,11 @@
+import FormRegister from "../../components/FormRegister";
+import { Div } from "./styles";
+
 export const Register = () => {
-  return <h1>Register</h1>;
+  return (
+    <Div>
+      <h1>Contact Flow</h1>
+      <FormRegister />
+    </Div>
+  );
 };

@@ -22,7 +22,7 @@ export const DashboardInfo = () => {
   return (
     <Container>
       <section>
-        <span className="name">
+        <span>
           Olá, <span>{user == undefined ? "Usuário" : user.name}</span>
         </span>
         <button>Editar informações pessoais</button>

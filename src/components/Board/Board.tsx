@@ -3,17 +3,22 @@ import { api } from "../../services/api";
 import { Contact } from "../DashBoardMain";
 import { List } from "./index";
 import { Card } from "../Card";
+import { useContact } from "../../hooks/useContact";
 
 const Board = () => {
-  // const { user } = useContext(TechContext);
   const [contacts, setContacts] = useState<Contact[]>([]);
+  const { contacts: contact } = useContact();
 
   useEffect(() => {
     (async () => {
-      const response = await api.get<Contact[]>("/contacts");
-      setContacts(response.data);
+      try {
+        const response = await api.get<Contact[]>("/contacts");
+        setContacts(response.data);
+      } catch (error) {
+        console.log(error);
+      }
     })();
-  }, []);
+  }, [contact]);
 
   return (
     <List>
@@ -22,7 +27,13 @@ const Board = () => {
           <p className="empty">Cadastre novos contatos</p>
         ) : (
           contacts.map((item) => (
-            <Card key={item.id} id={item.id} name={item.name}></Card>
+            <Card
+              key={item.id}
+              id={item.id}
+              name={item.name}
+              email={item.email}
+              phone={item.phone}
+            ></Card>
           ))
         )}
       </ul>
