@@ -22,7 +22,7 @@ export const Card = ({ id, name, email, phone }: CardProps) => {
       <p>{name}</p>
       <p>{email}</p>
       <p>{phone}</p>
-      <p>Clique para editar</p>
+      <p>Edit</p>
     </ContactItem>
   );
 };

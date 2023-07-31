@@ -4,6 +4,7 @@ import { api } from "../services/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/ReactToastify.css";
+import { TUserSchemaUpdate } from "../schemas";
 
 interface AuthProviderProps {
   children: React.ReactNode;
@@ -14,6 +15,8 @@ interface AuthContextValues {
   loading: boolean;
   user: LoggedUser;
   registerUser: (data: IUserRegister) => void;
+  deleteUser: () => void;
+  updateUser: (data: TUserSchemaUpdate) => void;
 }
 
 interface LoggedUser {
@@ -98,8 +101,32 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       toast.error(error.response.data!.message);
     }
   };
+
+  const deleteUser = async () => {
+    try {
+      await api.delete("users");
+      localStorage.clear();
+      navigate("/", { replace: true });
+      toast.success("Sucessfully deleted!");
+    } catch (error: any) {
+      console.log(error);
+      toast.error(error.response.data!.message);
+    }
+  };
+
+  const updateUser = async (data: TUserSchemaUpdate) => {
+    try {
+      await api.patch("/users", data);
+      toast.success("Sucessfully updated!");
+    } catch (error: any) {
+      console.log(error);
+      toast.error(error.response.data!.message);
+    }
+  };
   return (
-    <AuthContext.Provider value={{ signIn, loading, user, registerUser }}>
+    <AuthContext.Provider
+      value={{ signIn, loading, user, registerUser, deleteUser, updateUser }}
+    >
       {children}
     </AuthContext.Provider>
   );
