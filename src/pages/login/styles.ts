@@ -9,13 +9,13 @@ export const Div = styled.div`
   align-items: center;
   gap: 20px;
 
+  h1 {
+    font-family: "Inter", sans-serif;
+  }
+
   @media (max-width: 700px) {
     flex-direction: column;
     gap: 1rem;
-
-    img {
-      width: 80%;
-    }
   }
 `;
 
@@ -107,17 +107,15 @@ export const DivForm = styled.div`
 
     background-color: var(--color-white);
 
-    color: var(--color-grey-4);
+    color: #121214;
     margin-left: 2.5rem;
-    /* position: absolute;
-    left: 0; */
     bottom: 3.1875rem;
     text-align: center;
   }
 
   input {
     background: var(--color-white);
-    border: 0.125rem solid var(--color-main-3);
+    border: 0.125rem solid #121214;
     border-radius: 0.5rem;
     height: 3.75rem;
     width: 100%;
@@ -144,9 +142,10 @@ export const DivForm = styled.div`
     height: 3.75rem;
     margin-top: 0.9375rem;
 
-    background: var(--color-grey-2);
+    background: #121214;
     border-radius: 0.5rem;
     border: transparent;
+    color: #f8f9fa;
 
     font-family: "Inter", sans-serif;
     font-style: normal;
@@ -156,7 +155,6 @@ export const DivForm = styled.div`
 
     text-align: center;
 
-    color: var(--color-grey-3);
     &:hover {
       color: var(--color-grey-1);
       background-color: var(--color-grey-3);

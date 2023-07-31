@@ -8,6 +8,7 @@ export const useOutClick = (callback: () => void, parametro: 1 | 2) => {
     function modalOutClick(event: { target: any }) {
       const target = event.target;
       const element = ref.current;
+      console.log(target);
 
       if (parametro == 1) {
         if (target.name != "password") {

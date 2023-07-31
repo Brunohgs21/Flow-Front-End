@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Container } from "./styles";
+import { useModal } from "../../hooks/useModal";
+import { useAuth } from "../../hooks/useAuth";
 
 interface User {
   name: string;
@@ -9,7 +11,11 @@ interface User {
 }
 
 export const DashboardInfo = () => {
+  const {
+    user: { name },
+  } = useAuth();
   const [user, setUser] = useState<User>();
+  const { setOpenModalProfile } = useModal();
 
   useEffect(() => {
     async function getUser() {
@@ -17,15 +23,17 @@ export const DashboardInfo = () => {
       setUser(response.data);
     }
     getUser();
-  }, []);
+  }, [name]);
 
   return (
     <Container>
       <section>
         <span>
-          Olá, <span>{user == undefined ? "Usuário" : user.name}</span>
+          Hello, <span>{user == undefined ? "User" : user.name}</span>
         </span>
-        <button>Editar informações pessoais</button>
+        <button onClick={() => setOpenModalProfile(true)}>
+          Edit personal info
+        </button>
       </section>
     </Container>
   );

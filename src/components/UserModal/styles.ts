@@ -15,7 +15,7 @@ export const DivModal = styled.div`
   border-radius: 4px;
   div {
     display: flex;
-
+    align-items: center;
     justify-content: space-between;
     width: 100%;
     height: 50px;
@@ -47,16 +47,14 @@ export const DivModal = styled.div`
     display: flex;
     flex-direction: column;
     width: 90%;
-
-    position: absolute;
-    top: 40px;
+    gap: 5px;
   }
 
   label {
     font-family: "Inter", sans-serif;
     font-style: normal;
-    font-weight: 400;
-    font-size: 12.182px;
+    font-weight: 300;
+    font-size: 10px;
     line-height: 0px;
 
     font-family: "Inter", sans-serif;
@@ -66,7 +64,8 @@ export const DivModal = styled.div`
     line-height: 26px;
 
     color: #ffffff;
-    margin-top: 13px;
+    margin-top: 5px;
+    font-size: 15px;
   }
 
   input {
@@ -77,9 +76,32 @@ export const DivModal = styled.div`
     gap: 10.15px;
 
     width: 100%;
-    height: 37px;
+    height: 31.6px;
 
     background: #343b41;
+    border: 1.2182px solid #f8f9fa;
+    border-radius: 4px;
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+
+    color: #ffffff;
+  }
+
+  select {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 16.2426px;
+    gap: 10.15px;
+
+    width: 100%;
+    height: 48px;
+
+    background: #343b41;
+
     border: 1.2182px solid #f8f9fa;
     border-radius: 4px;
     font-family: "Inter", sans-serif;
@@ -192,6 +214,9 @@ export const DivModal = styled.div`
   }
   @media (max-width: 800px) {
     width: 300px;
+    .btnSave {
+      width: 150px;
+    }
   }
 `;
 
