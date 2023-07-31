@@ -26,4 +26,9 @@ export const ContactItem = styled.li`
     background-color: #343b41;
     transition: 1s ease;
   }
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    width: 70%;
+  }
 `;

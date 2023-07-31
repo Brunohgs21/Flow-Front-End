@@ -91,29 +91,6 @@ export const DivModal = styled.div`
     color: #ffffff;
   }
 
-  select {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0px 16.2426px;
-    gap: 10.15px;
-
-    width: 100%;
-    height: 48px;
-
-    background: #343b41;
-
-    border: 1.2182px solid #f8f9fa;
-    border-radius: 4px;
-    font-family: "Inter", sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 26px;
-
-    color: #ffffff;
-  }
-
   .buttonSubmit {
     display: flex;
     flex-direction: row;
@@ -212,6 +189,9 @@ export const DivModal = styled.div`
   .btnDelete:hover {
     color: #121214;
     transition: 1s ease;
+  }
+  @media (max-width: 800px) {
+    width: 300px;
   }
 `;
 

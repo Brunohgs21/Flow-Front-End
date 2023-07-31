@@ -12,7 +12,6 @@ export const ContactModal = () => {
     resolver: zodResolver(contactSchema),
   });
   const submit: SubmitHandler<ContactData> = async (data) => {
-    console.log(data);
     postContact(data);
   };
   return (

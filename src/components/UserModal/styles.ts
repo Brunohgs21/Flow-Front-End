@@ -212,6 +212,12 @@ export const DivModal = styled.div`
     color: #121214;
     transition: 1s ease;
   }
+  @media (max-width: 800px) {
+    width: 300px;
+    .btnSave {
+      width: 150px;
+    }
+  }
 `;
 
 export const BackGround = styled.div`

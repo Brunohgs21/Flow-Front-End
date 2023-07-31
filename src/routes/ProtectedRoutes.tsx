@@ -8,10 +8,10 @@ export const ProtectedRoutes = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-  console.log(user);
-  return Object.keys(user).length !== 0 ? (
-    <Outlet />
-  ) : (
-    <Navigate to="/" state={{ from: location }} />
-  );
+
+  if (user && Object.keys(user).length !== 0) {
+    return <Outlet />;
+  } else {
+    return <Navigate to="/" state={{ from: location }} />;
+  }
 };
