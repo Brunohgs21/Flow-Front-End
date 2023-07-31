@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Container } from "./styles";
+import { useModal } from "../../hooks/useModal";
 
 interface User {
   name: string;
@@ -10,6 +11,7 @@ interface User {
 
 export const DashboardInfo = () => {
   const [user, setUser] = useState<User>();
+  const { setOpenModalProfile } = useModal();
 
   useEffect(() => {
     async function getUser() {
@@ -22,10 +24,12 @@ export const DashboardInfo = () => {
   return (
     <Container>
       <section>
-        <span className="name">
+        <span>
           Olá, <span>{user == undefined ? "Usuário" : user.name}</span>
         </span>
-        <button>Editar informações pessoais</button>
+        <button onClick={() => setOpenModalProfile(true)}>
+          Editar informações pessoais
+        </button>
       </section>
     </Container>
   );

@@ -24,7 +24,7 @@ export const Container = styled.div`
     }
   }
 
-  .name {
+  span {
     font-family: "Inter", sans-serif;
     font-style: normal;
     font-weight: 700;

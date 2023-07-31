@@ -6,7 +6,7 @@ export const DashboardHeader = () => {
   const navigate = useNavigate();
 
   function verifyPermission() {
-    const user = localStorage.getItem("Token") || "";
+    const user = localStorage.getItem("flow:token") || "";
 
     if (user == "" || undefined) {
       navigate("/");
