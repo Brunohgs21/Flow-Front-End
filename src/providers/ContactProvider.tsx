@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { Contact } from "../components/DashBoardMain";
 import { api } from "../services/api";
 import { ContactData } from "../components/DashBoardMain/Validator";
+import { TContactSchemaUpdate } from "../schemas";
 
 interface ContactProviderProps {
   children: React.ReactNode;
@@ -10,7 +11,7 @@ interface ContactProviderProps {
 interface ContactContextValues {
   contacts: Contact[];
   postContact: (data: ContactData) => void;
-  updateContact: (data: Contact) => void;
+  updateContact: (data: TContactSchemaUpdate) => void;
   deleteContact: () => void;
 }
 
@@ -48,7 +49,7 @@ export const ContactProvider = ({ children }: ContactProviderProps) => {
     }
   };
 
-  const updateContact = async (data: ContactData) => {
+  const updateContact = async (data: TContactSchemaUpdate) => {
     try {
       const contactId = localStorage.getItem("ContactId");
       await api.patch(`/contacts/${contactId}`, data);

@@ -5,7 +5,7 @@ import { useContact } from "../../hooks/useContact";
 import { ContactSchemaUpdate, TContactSchemaUpdate } from "../../schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-export const ModalEdit = () => {
+const ModalEdit = () => {
   const ContactName = localStorage.getItem("ContactName") || "";
   const ContactEmail = localStorage.getItem("ContactEmail") || "";
   const ContactPhone = localStorage.getItem("ContactPhone") || "";
@@ -19,7 +19,7 @@ export const ModalEdit = () => {
     },
   });
   const { setOpenModalEdit } = useModal();
-  //   const { deleteContact, updateContact } = useContact();
+  const { deleteContact, updateContact } = useContact();
 
   return (
     <BackGround>
@@ -31,7 +31,7 @@ export const ModalEdit = () => {
           </button>
         </div>
 
-        <form>
+        <form onSubmit={handleSubmit(updateContact)}>
           <label htmlFor="name">Nome</label>
           <input type="text" id="name" {...register("name")} />
           <label htmlFor="email">Email</label>
@@ -44,10 +44,12 @@ export const ModalEdit = () => {
             </button>
           </section>
         </form>
-        <button className="btnDelete" type="button">
+        <button className="btnDelete" type="button" onClick={deleteContact}>
           Excluir
         </button>
       </DivModal>
     </BackGround>
   );
 };
+
+export default ModalEdit;
