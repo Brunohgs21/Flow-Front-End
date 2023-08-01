@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { Dispatch, createContext, useEffect, useState } from "react";
 import { Contact } from "../components/DashBoardMain";
 import { api } from "../services/api";
 import { ContactData } from "../components/DashBoardMain/Validator";
@@ -13,12 +13,21 @@ interface ContactContextValues {
   postContact: (data: ContactData) => Promise<void>;
   updateContact: (data: TContactSchemaUpdate) => void;
   deleteContact: () => void;
+  openModal: boolean;
+  setOpenModal: Dispatch<React.SetStateAction<boolean>>;
+  openModalEdit: boolean;
+  setOpenModalEdit: Dispatch<React.SetStateAction<boolean>>;
+  openModalProfile: boolean;
+  setOpenModalProfile: Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const ContactContext = createContext({} as ContactContextValues);
 
 export const ContactProvider = ({ children }: ContactProviderProps) => {
   const [contacts, setContacts] = useState<Contact[]>([]);
+  const [openModal, setOpenModal] = useState(false);
+  const [openModalEdit, setOpenModalEdit] = useState(false);
+  const [openModalProfile, setOpenModalProfile] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -46,9 +55,12 @@ export const ContactProvider = ({ children }: ContactProviderProps) => {
   const postContact = async (data: ContactData) => {
     try {
       await api.post("/contacts", data);
+
       reloadContacts();
     } catch (error) {
       console.log(error);
+    } finally {
+      setOpenModal(false);
     }
   };
 
@@ -59,6 +71,8 @@ export const ContactProvider = ({ children }: ContactProviderProps) => {
       reloadContacts();
     } catch (error) {
       console.log(error);
+    } finally {
+      setOpenModalEdit(false);
     }
   };
 
@@ -69,11 +83,24 @@ export const ContactProvider = ({ children }: ContactProviderProps) => {
       reloadContacts();
     } catch (error) {
       console.log(error);
+    } finally {
+      setOpenModalEdit(false);
     }
   };
   return (
     <ContactContext.Provider
-      value={{ contacts, postContact, updateContact, deleteContact }}
+      value={{
+        contacts,
+        postContact,
+        updateContact,
+        deleteContact,
+        openModal,
+        setOpenModal,
+        openModalEdit,
+        setOpenModalEdit,
+        openModalProfile,
+        setOpenModalProfile,
+      }}
     >
       {children}
     </ContactContext.Provider>

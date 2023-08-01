@@ -1,5 +1,5 @@
 import { ContactItem } from "./styles";
-import { useModal } from "../../hooks/useModal";
+import { useContact } from "../../hooks/useContact";
 
 interface CardProps {
   id: string;
@@ -9,7 +9,7 @@ interface CardProps {
 }
 
 export const Card = ({ id, name, email, phone }: CardProps) => {
-  const { setOpenModalEdit } = useModal();
+  const { setOpenModalEdit } = useContact();
   const edit = () => {
     localStorage.setItem("ContactId", id);
     localStorage.setItem("ContactName", name);

@@ -47,7 +47,6 @@ export const AuthContext = createContext({} as AuthContextValues);
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState({} as LoggedUser);
   const [loading, setLoading] = useState(true);
-  const [newUser, setNewUser] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -81,11 +80,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
       setLoading(false);
       const toNavigate = location.state?.from?.pathname || "/dashboard";
+      toast.success("Sucessfully logged!");
 
       navigate(toNavigate, { replace: true });
     } catch (error: any) {
       console.log(error);
-      toast.error(error.response.data!.message);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -98,7 +98,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       }, 6000);
     } catch (error: any) {
       console.log(error);
-      toast.error(error.response.data!.message);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -107,10 +107,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       await api.delete("users");
       localStorage.clear();
       navigate("/", { replace: true });
-      toast.success("Sucessfully deleted!");
+      toast.success("Account sucessfully deleted!");
     } catch (error: any) {
       console.log(error);
-      toast.error(error.response.data!.message);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -121,7 +121,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       setUser(response.data);
     } catch (error: any) {
       console.log(error);
-      toast.error(error.response.data!.message);
+      toast.error(error.response.data);
     }
   };
   return (

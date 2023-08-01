@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 
 export const ContactItem = styled.li`
   width: 95%;
-  min-height: 49px;
+  min-height: 4.9rem;
 
   background: #121214;
   border-radius: 4px;
