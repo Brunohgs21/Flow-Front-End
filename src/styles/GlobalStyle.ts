@@ -11,8 +11,11 @@ export default createGlobalStyle`
     --color-blue-300: #64b5f6;
     --color-blue-200: #90caf9;
     --color-blue-100: #bbdefb;
+    --color-gray-950: #121214;
     --color-gray-900: #212121;
+    --color-gray-850: #212529;
     --color-gray-800: #424242;
+    --color-gray-750: #343b41;
     --color-gray-700: #616161;
     --color-gray-600: #757575;
     --color-gray-500: #9e9e9e;
@@ -24,6 +27,7 @@ export default createGlobalStyle`
     --color-main-2:#219653;
     --color-main-3: #168821;
     --color-white: #ffffff;
+    --color-white-2: #f8f9fa;
     --color-grey-1:#f5f5f5;
     --color-grey-2: #e0e0e0;
     --color-grey-3:#828282;

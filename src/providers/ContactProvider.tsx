@@ -55,9 +55,8 @@ export const ContactProvider = ({ children }: ContactProviderProps) => {
   const postContact = async (data: ContactData) => {
     try {
       await api.post("/contacts", data);
-      console.log("postando1");
+
       reloadContacts();
-      console.log("postando2");
     } catch (error) {
       console.log(error);
     } finally {

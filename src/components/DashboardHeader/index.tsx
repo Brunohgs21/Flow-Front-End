@@ -9,7 +9,7 @@ export const DashboardHeader = () => {
     const user = localStorage.getItem("flow:token") || "";
 
     if (user == "" || undefined) {
-      navigate("/");
+      navigate("/", { replace: true });
     }
   }
 
