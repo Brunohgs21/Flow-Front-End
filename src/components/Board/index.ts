@@ -5,30 +5,28 @@ export const List = styled.div`
   width: 100%;
   text-align: center;
 
-  max-height: 416px;
+  max-height: 26rem;
   .empty {
     font-family: "Inter", sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 16px;
-    line-height: 26px;
-    /* identical to box height, or 165% */
-    margin-bottom: 30px;
-
-    color: #ffffff;
-    margin-top: 25px;
+    font-size: 1rem;
+    line-height: 2.6rem;
+    margin-bottom: 3rem;
+    color: var(--color-white);
+    margin-top: 2.5rem;
   }
 
   ul {
-    background-color: #212529;
+    background-color: var(--color-gray-850);
     width: 100%;
-    max-height: 416px;
-    border-radius: 4px;
+    max-height: 41.6rem;
+    border-radius: 0.4rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding-top: 15px;
+    padding-top: 1.5rem;
     overflow: auto;
   }
 `;
