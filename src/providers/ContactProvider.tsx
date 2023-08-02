@@ -3,6 +3,9 @@ import { Contact } from "../components/DashBoardMain";
 import { api } from "../services/api";
 import { ContactData } from "../components/DashBoardMain/Validator";
 import { TContactSchemaUpdate } from "../schemas";
+import { toast } from "react-toastify";
+import "react-toastify/ReactToastify.css";
+import { any } from "zod";
 
 interface ContactProviderProps {
   children: React.ReactNode;
@@ -55,7 +58,6 @@ export const ContactProvider = ({ children }: ContactProviderProps) => {
   const postContact = async (data: ContactData) => {
     try {
       await api.post("/contacts", data);
-
       reloadContacts();
     } catch (error) {
       console.log(error);
@@ -68,9 +70,10 @@ export const ContactProvider = ({ children }: ContactProviderProps) => {
     try {
       const contactId = localStorage.getItem("ContactId");
       await api.patch(`/contacts/${contactId}`, data);
+      toast.success("Sucessfully updated!");
       reloadContacts();
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      toast.error("Empty field!");
     } finally {
       setOpenModalEdit(false);
     }
@@ -80,6 +83,7 @@ export const ContactProvider = ({ children }: ContactProviderProps) => {
     try {
       const contactId = localStorage.getItem("ContactId");
       await api.delete(`/contacts/${contactId}`);
+      toast.success("Sucessfully deleted!");
       reloadContacts();
     } catch (error) {
       console.log(error);
